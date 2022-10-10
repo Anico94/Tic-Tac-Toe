@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Permanent+Marker&display=swap');
+
+/* font-family: 'Caveat', cursive;
+font-family: 'Permanent Marker', cursive; */
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    width: 960px;
+    margin:auto;
+    font-family: 'Caveat', cursive;
+    background-color:rgb(71, 68, 68)
+}
+
+h1{
+    text-align: center;
+    font-family: 'Permanent Marker', cursive;
+}
+
+div.container{
+    margin: auto;
+}
+
+div.game-board{
+    height: 800px;
+    width: 800px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    padding: 3rem;
+    border:1px solid rgb(241, 0, 0);
+    border-radius: 50px;
+    margin:auto;
+    background-color: white;
+}
+
+div.vertical-lines{
+    grid-area: 1/2/4/3;
+    border-right:10px ridge black;
+    border-left: 10px groove black;
+}
+div.horizontal-lines{
+    grid-area: 2/1/3/4;
+    border-top:10px ridge black;
+    border-bottom: 10px ridge black;
+}
+
+div.square{
+    margin:40px;
+    opacity:0.3;
+    z-index:100;
+    padding:0px;
+}
+
+.x .square:hover{
+    background-image: url("https://www.nicepng.com/png/full/17-173611_free-download-portable-network-graphics.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.x.checked {
+    background-image: url("https://www.nicepng.com/png/full/17-173611_free-download-portable-network-graphics.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.o .square:hover{
+    background-image: url("https://us.123rf.com/450wm/alexslb/alexslb1902/alexslb190200012/116519557-vector-brush-strokes-circles-of-paint-on-white-background-ink-hand-drawn-paint-brush-circle-logo-lab.jpg?ver=6");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.o.checked {
+    background-image: url("https://us.123rf.com/450wm/alexslb/alexslb1902/alexslb190200012/116519557-vector-brush-strokes-circles-of-paint-on-white-background-ink-hand-drawn-paint-brush-circle-logo-lab.jpg?ver=6");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+
+div.position00{
+    grid-area: 1/1/2/2;
+}
+
+div.position01{
+    grid-area: 1/2/2/3;
+}
+
+div.position02{
+    grid-area: 1/3/2/4;
+}
+
+div.position10{
+    grid-area: 2/1/3/2;
+}
+
+div.position11{
+    grid-area: 2/2/3/3;
+}
+
+div.position12{
+    grid-area: 2/3/3/4;
+}
+
+div.position20{
+    grid-area: 3/1/3/2;
+}
+
+div.position21{
+    grid-area: 3/2/4/3;
+}
+
+div.position22{
+    grid-area: 3/3/4/4;
+}
+
+div.square.checked{
+    opacity: 1;
+    pointer-events:none;
+}
+
+
+
+
