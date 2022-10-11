@@ -10,10 +10,23 @@ $(document).ready(function(){
         gameInfo.addChoice($(this).attr('class').slice(-2)); 
         $(this).addClass(`checked ${gameInfo.checkTurn()}`);
         $(this).parent().removeClass(gameInfo.checkTurn());
-        console.log(gameInfo.turnCounter = Number(gameInfo.turnCounter) + 1);
+        gameInfo.turnCounter = Number(gameInfo.turnCounter) + 1;
         $(this).parent().addClass(gameInfo.checkTurn());
-        console.log(gameInfo.checkWin());
+        if(gameInfo.checkWin()){
+            for (i = 0; i < gameInfo.winSquares.length; i++){
+                let position = gameInfo.winSquares[i];
+                $(`div.square.position${position}`).addClass('animate');
+            }
+        }
         });
+
+    $('.reset').on('click',function () {
+        console.log('clicked')
+        $('.square').removeClass('x o checked animate');
+        $('.game-board').removeClass('x o');
+        $('.game-board').addClass('x');
+        gameInfo.resetGame();
+    })
 
 
 
