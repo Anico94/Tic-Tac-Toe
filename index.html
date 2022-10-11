@@ -17,20 +17,30 @@
     <h1>Tic - Tac - Toe</h1>
     <div class="container">    
         <div class = "left-side">
-            <nav>
-                <h3>Players</h3>
-                <button class = "start button">Start Game</button>
-                <button class = "reset button">Restart Game</button>
-                <input class = "button input" type="text" placeholder="Player 1">
-                <input class = "button input" type="text" placeholder="Player 2">
-            </nav>
-            <footer>
-                Information about the author will go here
-            </footer>
+            <div class = 'game-options'>
+                <h3>Players - Enters Names</h3>
+                <section class="player1">
+                    <input class = "input name1" type="text" placeholder="Enter Player 1 Name">
+                    <button class = "join1 button">Join</button>
+                </section>
+                
+                <section class="player2">
+                    <input class = "input name2" type="text" placeholder="Enter Player 2 Name">
+                    <button class = "join2 button">Join</button>
+                </section>
+
+                <section class = 'buttons'>
+                    <button class = "start button">Start Game</button>
+                    <button class = "next-round button">Next Round</button>
+                    <button class = "reset-full button">Restart Full Game - New Players, New Scores</button>
+                </section>
+
+            </div>
+            
         </div>
 
         <div class="right-side">
-        <div class = "game-board x">
+        <div class = "game-board x hold-for-start">
                 <div class = "vertical-lines"></div>
                 <div class = "horizontal-lines"></div>
                 <div class = "square position00"></div>
@@ -46,7 +56,6 @@
         </div>
 
 
-        
 
     </div>
 </body>

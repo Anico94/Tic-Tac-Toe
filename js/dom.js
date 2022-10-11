@@ -20,7 +20,7 @@ $(document).ready(function(){
         }
         });
 
-    $('.reset').on('click',function () {
+    $('.next-round').on('click',function () {
         console.log('clicked')
         $('.square').removeClass('x o checked animate');
         $('.game-board').removeClass('x o');
@@ -28,6 +28,29 @@ $(document).ready(function(){
         gameInfo.resetGame();
     })
 
+    $('.join1').on('click',function () {
+        let name1 = gameInfo.player1;
+        if($('.name1').val() !== ''){
+            name1 = $('.name1').val();
+            gameInfo.player1 = name1;
+        }
+        $('section.player1').replaceWith(`<p>${name1} : Score <span class = "score1">0</span></p>`);
+    })
+    $('.join2').on('click',function () {
+        let name2 = gameInfo.player2;
+        if($('.name2').val() !== ''){
+            name2 = $('.name2').val();
+            gameInfo.player2 = name2;
+        }
+        $('section.player2').replaceWith(`<p>${name2} : Score <span class = "score2">0</span></p>`);
+    })
+
+    $('.start').on('click', function (){
+        $('.join1').trigger('click')
+        $('.join2').trigger('click')
+        $('.game-board').removeClass('hold-for-start');
+        $('.start').replaceWith("<p class = 'win-message'></p>")
+    })
 
 
 
