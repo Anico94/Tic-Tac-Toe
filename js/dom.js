@@ -1,3 +1,5 @@
+let $startButton;
+
 $(document).ready(function(){
 
     
@@ -16,43 +18,74 @@ $(document).ready(function(){
             for (i = 0; i < gameInfo.winSquares.length; i++){
                 let position = gameInfo.winSquares[i];
                 $(`div.square.position${position}`).addClass('animate');
+                $('.game-board').addClass('hold-for-start');
             }
+            //update the score
+            gameInfo.updateScores()
+            $('.score1').html(gameInfo.score1);
+            $('.score2').html(gameInfo.score2);
+
+            //add the winner to the paragraph text
+            $('.win-message').html(gameInfo.winnerText());
         }
         });
 
     $('.next-round').on('click',function () {
-        console.log('clicked')
+        gameInfo.winner = '';
+        $('.win-message').html('');
+        $('.game-board').removeClass('hold-for-start');
         $('.square').removeClass('x o checked animate');
         $('.game-board').removeClass('x o');
         $('.game-board').addClass('x');
-        gameInfo.resetGame();
+        gameInfo.nextRound();
     })
 
-    $('.join1').on('click',function () {
+    const join1 = function () {
         let name1 = gameInfo.player1;
         if($('.name1').val() !== ''){
             name1 = $('.name1').val();
             gameInfo.player1 = name1;
         }
-        $('section.player1').replaceWith(`<p>${name1} : Score <span class = "score1">0</span></p>`);
-    })
-    $('.join2').on('click',function () {
+        $('section.player1').html(`<p class = 'player1'>${name1} : Score <span class = "score1">0</span></p>`);
+    }
+    const join2 = function () {
         let name2 = gameInfo.player2;
         if($('.name2').val() !== ''){
             name2 = $('.name2').val();
             gameInfo.player2 = name2;
         }
-        $('section.player2').replaceWith(`<p>${name2} : Score <span class = "score2">0</span></p>`);
-    })
+        $('section.player2').html(`<p class = 'player2'>${name2} : Score <span class = "score2">0</span></p>`);
+    }
 
-    $('.start').on('click', function (){
+    const startButton = function (){
+        console.log('click')
         $('.join1').trigger('click')
         $('.join2').trigger('click')
         $('.game-board').removeClass('hold-for-start');
         $('.start').replaceWith("<p class = 'win-message'></p>")
+        $('div.press-start').css('height','0');
+        $('h3').html('Players');
+    }
+
+    $('.start').on('click', startButton);
+    $('.join1').on('click',join1)
+    $('.join2').on('click',join2)
+
+    $('.reset-full').on('click', function (){
+        $('.win-message').replaceWith('<button class = "start button">Start Game</button>')
+        $('div.press-start').removeClass('.hide')
+        $('p.player1').replaceWith('<input class = "input name1" type="text" placeholder="Enter Player 1 Name"> <button class = "join1 button">Join</button>');
+        $('p.player2').replaceWith('<input class = "input name2" type="text" placeholder="Enter Player 2 Name"> <button class = "join2 button">Join</button>');
+        $('.game-board').addClass('hold-for-start');
+        $('.start').on('click', startButton);
+        $('.join1').on('click',join1)
+        $('.join2').on('click',join2)
+        gameInfo.winner = '';
+        $('.square').removeClass('x o checked animate');
+        $('.game-board').removeClass('x o');
+        $('.game-board').addClass('x');
+        gameInfo.resetGame();
+        $('div.press-start').css('height','500px');
+        $('h3').html('Players Enter Names');
     })
-
-
-
-
 });

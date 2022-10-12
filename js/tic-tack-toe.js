@@ -29,38 +29,61 @@ const gameInfo = {
         }
     },
     checkWin: function(){
-        
         let winner = '';
         for (i = 0; i < this.winOptions.length; i++){
             let testWin = this.winOptions[i];
             if(_.difference(testWin, this.xChoices).length === 0){
                 for(j = 0; j < testWin.length; j++){
                     this.winSquares.push(testWin[j]);
-                    winner = this.player1;
+                    this.winner = this.player1;
                 };
             }else if(_.difference(testWin, this.oChoices).length === 0){
                 for(j = 0; j < testWin.length;j++){
                     this.winSquares.push(testWin[j]);
-                    winner = this.player2;
+                    this.winner = this.player2;
                 };
-            }else if (this.turnCounter === 9){
-                winner = 'tie';
             }
         }
-        if(winner !== ''){
-            console.log(winner);
+        if(this.winner !== ''){
+            return true;
+        }else if(this.winner === '' && this.turnCounter === 9){
+            this.winner = 'Tie';
+            this.winSquares = ['00','01','02','10','11','12','20','21','22'];
             return true;
         }
     },
     winSquares: [],
-    result: function(){
-        //add to be done 
+    winner: '',
+    winnerText: function(){
+        let winText = ''
+        if(this.player1 === this.winner){
+            winText = `${this.player1} wins round ${this.score1 + this.score2}.`;
+        }else if(this.player2 === this.winner){
+            winText = `${this.player2} wins round ${this.score1 + this.score2}.`
+        }else{
+            winText = "This round was a tie"
+        }
+        return winText;
     },
-    resetGame: function (){
+    updateScores: function (){
+        if(this.player1 === this.winner){
+            this.score1 += 1;
+        }else if(this.player2 === this.winner){
+            this.score2 += 1;
+        }
+    },
+    nextRound: function (){
         this.xChoices = [],
         this.oChoices = [],
-        this.turnCounter = 0,
+        this.turnCounter = 0;
         this.winSquares = [];
+    },
+    resetGame: function (){
+        this.nextRound();
+        this.player1 = 'Player 1';
+        this.player2 = 'Player 2';
+        this.score1 = 0;
+        this.score2 = 0;
     }
 }
 

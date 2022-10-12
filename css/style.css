@@ -87,25 +87,25 @@ div.square{
 }
 
 .x .square:hover{
-    background-image: url("https://www.nicepng.com/png/full/17-173611_free-download-portable-network-graphics.png");
+    background-image: url('../img/cross.jpg');
     background-size: contain;
     background-repeat: no-repeat;
 }
 
 .x.checked {
-    background-image: url("https://www.nicepng.com/png/full/17-173611_free-download-portable-network-graphics.png");
+    background-image: url('../img/cross.jpg');
     background-size: contain;
     background-repeat: no-repeat;
 }
 
 .o .square:hover{
-    background-image: url("https://us.123rf.com/450wm/alexslb/alexslb1902/alexslb190200012/116519557-vector-brush-strokes-circles-of-paint-on-white-background-ink-hand-drawn-paint-brush-circle-logo-lab.jpg?ver=6");
+    background-image: url('../img/cirle.jpg');
     background-size: contain;
     background-repeat: no-repeat;
 }
 
 .o.checked {
-    background-image: url("https://us.123rf.com/450wm/alexslb/alexslb1902/alexslb190200012/116519557-vector-brush-strokes-circles-of-paint-on-white-background-ink-hand-drawn-paint-brush-circle-logo-lab.jpg?ver=6");
+    background-image: url('../img/cirle.jpg');
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -152,13 +152,12 @@ div.square.checked{
     pointer-events:none;
 }
 
-
-
 div.square.animate{
     animation: tada;
     animation-iteration-count: 3;
     animation-duration: 2s;
 }
+
 /* CSS */
 .button {
     align-items: center;
@@ -266,13 +265,24 @@ section .reset-full{
     background-color: rgb(249, 91, 91)
 }
 
-/* div.game-board.hold-for-start{
-    z-index: 99;
+div.game-board.hold-for-start{
     pointer-events:none;
-} */
-
-div.game-board.hold-for-start:hover{
-    background-color: blue;
 }
 
-/* Add a message over the game board to click start to play */
+div.press-start{
+    position:fixed;
+    width:500px;
+    height:500px;
+    text-align: center;
+    margin: auto;
+    background-color:rgb(71, 68, 68);
+    border-radius: 50px;
+    font-size: 2rem;
+    line-height: 500px;
+    display: none;
+    overflow:hidden;
+}
+
+div.right-side:hover .press-start{
+    display: block;
+}
