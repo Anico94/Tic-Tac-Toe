@@ -93,7 +93,7 @@ div.square{
     background-repeat: no-repeat;
 }
 
-.x.checked {
+div.game-board .x.checked {
     background-image: url('../img/cross.jpg');
     background-size: contain;
     background-repeat: no-repeat;
@@ -105,7 +105,7 @@ div.square{
     background-repeat: no-repeat;
 }
 
-.o.checked {
+div.game-board .o.checked {
     background-image: url('../img/cirle.jpg');
     background-size: contain;
     background-repeat: no-repeat;
