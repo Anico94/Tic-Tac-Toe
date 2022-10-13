@@ -281,6 +281,7 @@ div.press-start{
     line-height: 500px;
     display: none;
     overflow:hidden;
+    z-index: 100;
 }
 
 div.right-side:hover .press-start{
