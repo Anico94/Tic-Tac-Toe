@@ -29,7 +29,7 @@ const gameInfo = {
         }
     },
     checkWin: function(){
-        for (i = 0; i < this.winOptions.length; i++){
+        for (let i = 0; i < this.winOptions.length; i++){
             //consider each possible win option
             let testWin = this.winOptions[i];
             //check if the current loop win positions are in the currently selected choices of player 1
